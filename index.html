@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Vue Js - HelloWorld App</title>
+    
     <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
     <!-- Using via Google Web Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -8,83 +12,29 @@
     <!-- https://tailwindcss.com/docs/installation -->
     <!-- Using Tailwind via CDN -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- Icons CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
-
-<body class="font-sans max-w-7xl mx-auto bg-gray-100">
-    <div class="py-4 pb-12 ">
-        <a href="index.html">
-            <img class="float-left max-h-14 -mt-3" src="https://shop.zwave.eu/media/image/96/79/15/Aeotec_logo_store.png" alt="aeotec">
-        </a>
-        <ul class="list-none flex space-x-5 float-right text-gray-500 text-xl">
-            <li class="hover:text-blue-400 hover:underline"><a href="index.html">Newsletter</a></li>
-            <li class="hover:text-blue-400 hover:underline"><a href="index.html">Products</a></li>
-            <li class="hover:text-blue-400 hover:underline"><a href="index.html">Software</a></li>
-            <li class="hover:text-blue-400 hover:underline"><a href="index.html">Aeotec Id</a></li>
-          </ul>
-    </div>
-    <div class="w-full h-96 items-center my-12">
-        <div class="w-1/2 ml-5 -mr-5 mt-48 flex-none float-left">
-            <h1 class="text-blue-500 text-6xl font-semibold mb-7">aërQ<br> Temperature & Humidity Sensor</h1>
-            <h2 class="text-gray-700 text-3xl font-semibold mt-9 mb-5">4 in 1 environment sensor</h2>
-            <p class="text-blue-500 space-x-5">
-                <a class="hover:underline hover:text-blue-800" href="index.html">Learn more ></a>
-                <a class="hover:underline hover:text-blue-800" href="index.html">Buy ></a>
-            </p>
-        </div>
-        <div class="w-1/2 flex-none float-right">
-            <img src="https://aeotec.com/images/home-page/aerq-temperature-sensor_@1x.webp" alt="aeotec">
-        </div>
-    </div>    
-    <div class="my-3 w-full h-2/3 bg-blue-400 flex-none float-left">
-        <div class="ml-10 mt-36 w-1/2 flex-none float-left text-white text-center">
-            <h1 class="text-4xl font-semibold mb-7">Door / Windown Sensor 7 pro</h1>
-            <h2 class="text-2xl font-semibold mb-1">3 in 1 security sensor</h2>
-            <p class="space-x-5 mb-7">
-                <a class="hover:underline" href="index.html">Learn more ></a>
-                <a class="hover:underline" href="index.html">Buy ></a>
-            </p>
-            <h2 class="text-2xl font-semibold">Upgraded to Pro level for 2021</h2>
-        </div>
-        <div class="w-1/3 flex-none float-right mr-10">
-            <img src="https://aeotec.com/images/home-page/door-window-sensor-7-pro_@1x.webp" alt="aeotec">
+<body>
+    <div id="app" class="h-screen flex justify-center items-center bg-gray-200">
+        <div class="bg-purple-600 text-white p-3 lg:w-1/4 sm:w-4/4 md:w-2/4 rounded text-center py-8 hover:shadow-md cursor-pointer">
+            <div class="flex justify-center mb-2"> <img v-bind:src="imgProfileUrl" class="rounded-full h-24 w-24 flex items-center justify-center"> </div>
+            <h1 class="text-3xl">{{firstname}} {{lastname}}</h1> 
+            <span class="text-1xl">{{info}}</span>
+            <div class="mt-3"> 
+                <a v-bind:href="facebookUrl"><i class="fa fa-facebook mr-2"></i></a> 
+                <a href=""><i class="fa fa-linkedin mr-2"></i></a> 
+                <a href=""><i class="fa fa-google mr-2"></i></a> 
+                <a v-bind:href="instagramUrl"><i class="fa fa-instagram mr-2"></i></a> 
+            </div>
         </div>
     </div>
-    <div class="items-center text-white text-center my-3 w-full h-96 bg-blue-400 flex-none float-left">
-        <h1 class="text-5xl mt-10 font-semibold">Save 10% on smart home ― join Aeotec's newsletter</h1>
-        <div class="ml-24 mt-5 w-1/3 flex-none float-left text-base">
-            We're always working on something new and we'd be happy to keep you up to date with all our new products, major updates, and occasional sales offers. As our way of saying thanks for welcoming us into your inbox, we'll also offer you a one-time-use 10% off discount code.
-            <br><br>We only send out the newsletters occasionally; typically no more than once a month. If you'd like to be kept in the know on all things Aeotec, please fill in the form and tap 'Join Newsletter - Save 10%'.
-        </div>
-        <form class="text-left w-1/2 mt-5 flex-none float-right">
-            <p class="font-semibold text-lg mb-1">Your e-mail address *</p>
-            <input class="my-1 w-2/3 text-black border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
-            <p class="font-semibold text-lg my-1">Your country *</p>
-            <select class="text-black w-2/3 my-1 mb-3">
-                <option value="Thailand">Thailand</option>
-                <option value="USA">USA</option>
-            </select>
-            <br>
-            <input type="checkbox" id="agree">
-            <label for="agree"> I agree that Aeotec can use the above data to email me news and specials offers in line with their privacy policy.</label><br>
-            <button class="p-2 mt-3 bg-white text-gray-500">
-                Join Newsletter ― Save 10%
-            </button>
-        </form>
-    </div>
-    <div class="items-center my-3 w-full h-2/3 bg-blue-400 flex-none float-left">
-        <div class="w-1/3 flex-none float-left ml-10">
-            <img src="https://aeotec.com/images/products/z-stick/aeotec-z-stick-gen5-plus-wireless_@1x.webp" alt="aeotec">
-        </div>
-        <div class="mr-10 mt-36 w-1/2 flex-none float-right text-white text-center">
-            <h1 class="text-6xl font-semibold mb-7">Z-Stick Gen5 PLUS</h1>
-            <h2 class="text-3xl font-semibold mb-1">Your gateway to building your own automation gateway</h2>
-            <p class="space-x-5 mb-7">
-                <a class="hover:underline" href="index.html">Learn more ></a>
-                <a class="hover:underline" href="index.html">Buy ></a>
-            </p>
-            <h2 class="text-3xl font-semibold">New for 2021</h2>
-        </div>
-    </div>
-</body>
-
+    <!-- my main.js -->
+    <script src="./profile.js"></script>
+  </body>
 </html>
