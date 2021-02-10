@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 2: Photo Gallery</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Using iconmonstr CDN -->
+  <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet" />
+  
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="relative items-center justify-center">
+      <!-- Header Text-->
+      <h1 class="text-center text-2xl font-bold p-4 bg-gray-800 text-gray-400">Photo Gallery (All: {{ imgs.length }} Like: {{ imgs.filter( i => i.like ).length }} )</h1>
+      <!-- All Cards Container -->
+      <div class="lg:flex items-center container mx-auto my-auto">
+        <div v-for="(img,index) in imgs" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
+          <!-- Card Image -->
+          <img v-bind:src="img.link" alt=""class="overflow-hidden" v-on:click="toggleLike(index)">
+          <!-- Card Content -->
+          <div class="p-4">
+            <h3 class="font-medium text-gray-600 text-lg my-2 uppercase">
+              {{img.title}}
+              <i v-show="img.like" class="im im-facebook-like"></i>
+            </h3>
+            <p class="text-justify">{{img.text}}</p>            
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div class="mt-10 bottom-0 text-center">
+        <h4 class="text-sm font-semibold text-gray-600 "> &COPY; 2021 CORE-UI</h4>
+      </div>
+    </div>
+  </div> 
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+
+  <!-- credit -->
+  <!-- https://tailwindcomponents.com/component/3-crisp-cards -->
+</body>
+
+</html>
