@@ -36,7 +36,7 @@
       </h1>
       <!-- All Cards Container -->
       <div class="lg:flex items-center container mx-auto my-auto">
-        <div v-for="(img,index) in filteredList" v-show="img.show" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
+        <div v-for="(img,index) in filteredList" v-if="filteredList!=0" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
           <!-- Card Image -->
           <img v-bind:src="img.link" alt=""class="overflow-hidden" v-on:click="toggleLike(index)">
           <!-- Card Content -->
@@ -48,6 +48,9 @@
             <p class="text-justify">{{img.text}}</p>            
           </div>
         </div>
+        <h1 v-else class="text-center text-2xl font-bold p-4">
+          No photo.
+        </h1>
       </div>
       <!-- Footer -->
       <div class="mt-10 bottom-0 text-center">
