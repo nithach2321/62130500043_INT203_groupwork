@@ -15,12 +15,22 @@ const app = {
                     like: false,
                     title: "Tour the City",
                     text : "Upon but that objects tis sore would what. Who formed in coffined heartless shades, there mine was heart vast flaunting he low relief uncouth, dear and and but suffice ofttimes."}
-                ]
+                ],
+            searchShow: {
+                show : false
+            },
+            //searchInput : ''
         }
     },
     methods: {
         toggleLike(index){
             this.imgs[index].like = !this.imgs[index].like
+        },
+        toggleSearch(){
+            this.searchShow.show = !this.searchShow.show
+        },
+        searchInput(input){
+            console.log(input)
         }
     }
 }
