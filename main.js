@@ -16,25 +16,84 @@ const app = {
                     title: "Tour the City",
                     text : "Upon but that objects tis sore would what. Who formed in coffined heartless shades, there mine was heart vast flaunting he low relief uncouth, dear and and but suffice ofttimes."}
                 ],
-            searchShow: {
-                show : false
+            search: {
+                show : false,
+                inputData : ''
             },
-            searchInputData : ''
+            gallery: {
+                style: {
+                    'border-radius': '5px',
+                    cursor: 'pointer',
+                    transition: '0.3s'
+                }
+            },
+            modal: {
+                imgSrc : '',
+                caption: '',
+                style: {
+                    display: "none", /* Hidden by default */
+                    position: "fixed", /* Stay in place */
+                    'z-index': 1, /* Sit on top */
+                    'padding-top': '100px', /* Location of the box */
+                    left: 0,
+                    top: 0,
+                    width: '100%', /* Full width */
+                    height: '100%', /* Full height */
+                    overflow: "auto", /* Enable scroll if needed */
+                    'background-color': "rgb(0,0,0)", /* Fallback color */
+                    'background-color': "rgba(0,0,0,0.9)" /* Black w/ opacity */
+                },
+                contentStyle : {
+                    margin: 'auto',
+                    display: 'block',
+                    width: '80%',
+                    'max-width': '700px'
+                },
+                captionStyle : {
+                    margin: 'auto',
+                    display: 'block',
+                    width: '80%',
+                    'max-width': '700px',
+                    'text-align': 'center',
+                    color: '#ccc',
+                    padding: '10px 0',
+                    height: '150px'
+                },
+                closeStyle: {
+                    position: 'absolute',
+                    top: '15px',
+                    right: '35px',
+                    color: '#f1f1f1',
+                    'font-size': '40px',
+                    'font-weight': 'bold',
+                    transition: '0.3s',
+                  }
+            }
         }
     },
     methods: {
         toggleLike(index){
-            this.imgs[index].like = !this.imgs[index].like
+            this.imgs[index].like = !this.imgs[index].like;
         },
         toggleSearch(){
-            this.searchShow.show = !this.searchShow.show;
+            this.search.show = !this.search.show;
+        },
+        openViewImg(index){
+            this.modal.style.display = 'block';
+            this.modal.imgSrc = this.imgs[index].link;
+            this.modal.caption = this.imgs[index].title;
+        },
+        closeViewImg(){
+            this.modal.style.display = 'none';
+            this.modal.imgSrc = '';
+            this.modal.caption = '';
         }
     },
     computed: {
         filteredList() {
           return this.imgs.filter
             (imgs => {
-                return imgs.title.toLowerCase().includes(this.searchInputData.toLowerCase())
+                return imgs.title.toLowerCase().includes(this.search.inputData.toLowerCase())
             })
         }
     }
