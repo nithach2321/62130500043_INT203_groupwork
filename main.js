@@ -1,6 +1,7 @@
-const app = {
+const app = Vue.createApp({
     data() {
         return {
+            photoview: '',
             imgs: [ {link: 'https://picsum.photos/id/29/2106/1404',
                     like: false,
                     title: "Climb the Mountains",
@@ -17,15 +18,7 @@ const app = {
                     text : "Upon but that objects tis sore would what. Who formed in coffined heartless shades, there mine was heart vast flaunting he low relief uncouth, dear and and but suffice ofttimes."}
                 ],
             search: {
-                show : false,
                 inputData : ''
-            },
-            gallery: {
-                style: {
-                    'border-radius': '5px',
-                    cursor: 'pointer',
-                    transition: '0.3s'
-                }
             },
             modal: {
                 imgSrc : '',
@@ -72,22 +65,17 @@ const app = {
         }
     },
     methods: {
-        toggleLike(index){
-            this.imgs[index].like = !this.imgs[index].like;
+        // toggleSearch(){
+        //     this.search.show = !this.search.show;
+        // },
+        openViewImg(){
+            this.photoview = 'block';
         },
-        toggleSearch(){
-            this.search.show = !this.search.show;
-        },
-        openViewImg(index){
-            this.modal.style.display = 'block';
-            this.modal.imgSrc = this.imgs[index].link;
-            this.modal.caption = this.imgs[index].title;
-        },
-        closeViewImg(){
-            this.modal.style.display = 'none';
-            this.modal.imgSrc = '';
-            this.modal.caption = '';
-        }
+        // closeViewImg(){
+        //     this.modal.style.display = 'none';
+        //     this.modal.imgSrc = '';
+        //     this.modal.caption = '';
+        // }
     },
     computed: {
         filteredList() {
@@ -98,5 +86,4 @@ const app = {
         }
     }
 }
-Vue.createApp(app).mount('#app')
-
+)
