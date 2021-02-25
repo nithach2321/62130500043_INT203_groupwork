@@ -10,7 +10,7 @@ app.component('photo-list', {
     /*html*/
     `<!-- All Cards Container -->
     <div class="lg:flex items-center container mx-auto my-auto">
-        <div v-if="imgFilteredList!=0" v-for="(img,index) in imgFilteredList"  class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
+        <div v-if="imgFilteredList!=0" v-for="(img,index) in imgFilteredList" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
             <!-- Card Image -->
             <img :style="gallery.style" v-bind:src="img.link" alt="" class="overflow-hidden" >
             <!-- Card Content -->
@@ -40,8 +40,8 @@ app.component('photo-list', {
     },
 
     methods: {
-        toggleLike() {
-          this.img.like = !this.img.like;
+        toggleLike(index) {
+          this.imgs[index].like = !this.imgs[index].like;
         },
         openViewImg() {
           this.$emit('open-view')
