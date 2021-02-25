@@ -29,32 +29,13 @@
     <div class="relative items-center justify-center">
       <!-- Header Text-->
       <h1 class="text-center text-2xl font-bold p-4 bg-gray-800 text-gray-400">Photo Gallery (All: {{ imgs.length }} Like: {{ imgs.filter( i => i.like ).length }} )
-      <!-- Search Bar-->
-      <!-- <i v-show="!search.show" v-on:click="toggleSearch()" class="im im-magnifier"></i>
+      <i v-show="!search.show" v-on:click="toggleSearch()" class="im im-magnifier"></i>
       <input v-show="search.show" v-model="search.inputData" placeholder="Please enter text for searching photos" />
       <button v-show="search.show" v-on:click="toggleSearch()" class="bg-green-500 text-white  py-1 px-2 rounded">
         Cancel
-      </button> -->
-      <search-bar @search-data="search.inputData"></search-bar>
+      </button>
       </h1>
-      <!-- All Cards Container -->
-      <div class="lg:flex items-center container mx-auto my-auto">
-        <div v-for="(img,index) in filteredList" v-if="filteredList!=0" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
-          <!-- PhotoItem.js -->
-          <photo-list :img="img" @open-view="openViewImg"></photo-list>
-          <!-- PhotoView.js -->
-          <photo-view :img="img" ></photo-view>
-        </div>
-        <h1 v-else class="text-center text-2xl font-bold p-4">
-          No photo.
-        </h1>
-      </div>
-      <!-- Image Modal -->
-      <!-- <div :style='modal.style'>
-        <span :style='modal.closeStyle' v-on:click="closeViewImg()">&times;</span>
-        <img :style='modal.contentStyle' v-bind:src="modal.imgSrc">
-        <div :style="modal.captionStyle">{{modal.caption}}</div>
-      </div> -->
+      <photo-list :imgFilteredList="filteredList"></photo-list>
       <!-- Footer -->
       <div class="mt-10 bottom-0 text-center">
         <h4 class="text-sm font-semibold text-gray-600 "> &COPY; 2021 CORE-UI</h4>
@@ -64,9 +45,7 @@
 
   <!-- my main.js -->
   <script src="./main.js"></script>
-  <script src="./components/PhotoSearch.js"></script>
   <script src="./components/PhotoItem.js"></script>
-  <script src="./components/PhotoView.js"></script>
 
   <script>
     const mountedApp = app.mount('#app')
