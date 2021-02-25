@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            keyword : '',
             imgs: [ {link: 'https://picsum.photos/id/29/2106/1404',
                     like: false,
                     title: "Climb the Mountains",
@@ -16,17 +17,6 @@ const app = Vue.createApp({
                     title: "Tour the City",
                     text : "Upon but that objects tis sore would what. Who formed in coffined heartless shades, there mine was heart vast flaunting he low relief uncouth, dear and and but suffice ofttimes."}
                 ],
-            search: {
-                show : false,
-                inputData : ''
-            },
-            gallery: {
-                style: {
-                    'border-radius': '5px',
-                    cursor: 'pointer',
-                    transition: '0.3s'
-                }
-            },
             modal: {
                 imgSrc : '',
                 caption: '',
@@ -72,11 +62,8 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        toggleLike(index){
-            this.imgs[index].like = !this.imgs[index].like;
-        },
-        toggleSearch(){
-            this.search.show = !this.search.show;
+        updateKeyword(text){
+            this.keyword = text;
         },
         openViewImg(index){
             this.modal.style.display = 'block';
@@ -93,7 +80,7 @@ const app = Vue.createApp({
         filteredList() {
           return this.imgs.filter
             (imgs => {
-                return imgs.title.toLowerCase().includes(this.search.inputData.toLowerCase())
+                return imgs.title.toLowerCase().includes(this.keyword.toLowerCase())
             })
         }
     }
