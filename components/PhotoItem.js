@@ -1,7 +1,7 @@
 app.component('photo-list', {
     props: {
-        imgFilteredList: {
-            type: Object,
+        imglist: {
+            type: Array,
             require: true
         }
     },
@@ -10,11 +10,11 @@ app.component('photo-list', {
     /*html*/
     `<!-- All Cards Container -->
     <div class="lg:flex items-center container mx-auto my-auto">
-        <div v-if="imgFilteredList!=0" v-for="(img,index) in imgFilteredList" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
+        <div v-if="imglist!=0" v-for="img in imglist" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
             <!-- Card Image -->
             <img :style="gallery.style" v-bind:src="img.link" alt="" class="overflow-hidden" >
             <!-- Card Content -->
-            <div class="p-4" v-on:click="toggleLike(index)">
+            <div class="p-4" v-on:click="toggleLike(img)">
                 <h3 class="font-medium text-gray-600 text-lg my-2 uppercase">
                     {{img.title}}
                     <i v-show="img.like" class="im im-facebook-like"></i>
@@ -40,8 +40,8 @@ app.component('photo-list', {
     },
 
     methods: {
-        toggleLike(index) {
-          this.imgs[index].like = !this.imgs[index].like;
+        toggleLike(img) {
+          img.like = !img.like;
         },
         openViewImg() {
           this.$emit('open-view')
@@ -49,5 +49,4 @@ app.component('photo-list', {
       }
 })
 
-// v-if="imgFilteredList!=0"
 // v-on:click="openViewImg(index)"
