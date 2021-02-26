@@ -12,7 +12,7 @@ app.component('photo-list', {
     <div class="lg:flex items-center container mx-auto my-auto">
         <div v-if="imglist!=0" v-for="img in imglist" class="lg:m-4 shadow-md hover:shadow-lg hover:bg-gray-100 rounded-lg bg-white my-12 mx-8">
             <!-- Card Image -->
-            <img :style="gallery.style" v-bind:src="img.link" alt="" class="overflow-hidden" >
+            <img :style="style" v-bind:src="img.link" alt="" class="overflow-hidden" v-on:click="$emit('open-view',img)">
             <!-- Card Content -->
             <div class="p-4" v-on:click="toggleLike(img)">
                 <h3 class="font-medium text-gray-600 text-lg my-2 uppercase">
@@ -29,12 +29,10 @@ app.component('photo-list', {
 
     data() {
         return {
-            gallery: {
-                style: {
-                    'border-radius': '5px',
-                    cursor: 'pointer',
-                    transition: '0.3s'
-                }
+            style: {
+                'border-radius': '5px',
+                cursor: 'pointer',
+                transition: '0.3s'
             }
         }
     },
@@ -42,11 +40,6 @@ app.component('photo-list', {
     methods: {
         toggleLike(img) {
           img.like = !img.like;
-        },
-        openViewImg() {
-          this.$emit('open-view')
         }
       }
 })
-
-// v-on:click="openViewImg(index)"
