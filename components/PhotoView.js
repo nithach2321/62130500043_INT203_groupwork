@@ -1,4 +1,5 @@
 app.component('photo-view',{
+    emits: ['close-view'],
     props:{
         img: {
             require: true

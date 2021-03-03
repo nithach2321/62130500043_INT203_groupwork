@@ -1,4 +1,5 @@
 app.component('search-bar',{
+    emits: ['export-search'],
     props:{
     },
 

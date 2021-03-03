@@ -1,4 +1,5 @@
 app.component('photo-list', {
+    emits: ['open-view'],
     props: {
         imglist: {
             type: Array,
