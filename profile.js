@@ -21,8 +21,8 @@ const constraints = {
     phone: {
         presence: true,
         length: {
-            minimum : 10,
-            message: "must be at least 10 digits"
+            minimum : 3,
+            message: "must be at least 3 digits"
         },        
     },
     chosensubject: {
@@ -33,12 +33,16 @@ const constraints = {
 var app =Vue.createApp({
     data() {
         return {
-            imgProfileUrl: 'https://scontent.fbkk9-2.fna.fbcdn.net/v/t31.0-1/c27.0.160.160a/p160x160/23593671_1661648053886646_4665329394504623547_o.jpg?_nc_cat=109&ccb=2&_nc_sid=dbb9e7&_nc_ohc=hOeG_yVumB8AX_P23XX&_nc_ht=scontent.fbkk9-2.fna&tp=27&oh=9da976f75ce5332855088eeee57f64ed&oe=6040BD59',
-            info: 'Network Engineer',
+            imgProfileUrl: 'https://scontent.fbkk9-2.fna.fbcdn.net/v/t31.0-1/c33.0.200.200a/p200x200/23593671_1661648053886646_4665329394504623547_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=7206a8&_nc_eui2=AeF4MamstvfHmUDLTFXbx9qcqt60xwZ205iq3rTHBnbTmMXmgz01u7UsNLxibQ1wpnGdO1LossuhCeJcUyRtycPm&_nc_ohc=rxeZwCgN9U0AX_jXjZx&_nc_ht=scontent.fbkk9-2.fna&tp=27&oh=bd9b6d265671f9b38f9daf4cebcb7024&oe=606933DB',
             facebookUrl: 'https://www.facebook.com/Bom.nithach/',
             instagramUrl: 'https://www.instagram.com/bom_2321/',
             firstname: 'Nithach',
             lastname: 'Vassanapong',
+            age: 20,
+            gender: 'Male',
+            email: 'Bom-_2321@outlook.co.th',
+            phone: '0875518757',
+            chosensubject: 'INT203',
             formdata: {
                 firstname: null,
                 lastname: null,
@@ -57,14 +61,19 @@ var app =Vue.createApp({
     },
 
     methods: {
-        checkForm(){
-            console.log(this.formdata)
+        checkForm(e){
+            console.log(e);
             this.errors = validate(this.formdata,
                                     constraints)
             if(!this.errors){
                 alert("Your profile is updated successfully.")
                 this.firstname = this.formdata.firstname;
                 this.lastname = this.formdata.lastname;
+                this.age = this.formdata.age;
+                this.gender = this.formdata.gender;
+                this.email = this.formdata.email;
+                this.phone = this.formdata.phone;
+                this.chosensubject = this.subject_lists[this.formdata.chosensubject-1].subject_name;
             }
         }
     }
